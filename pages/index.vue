@@ -21,9 +21,10 @@ const { refetch, data, suspense } = useQuery({
   queryFn: fetcher,
 });
 
+const queryClient = useQueryClient();
+const { ssrContext } = useNuxtApp();
+
 onServerPrefetch(async () => {
-  const queryClient = useQueryClient();
-  const { ssrContext } = useNuxtApp();
   await suspense();
   ssrContext.nuxt.vueQueryState = dehydrate(queryClient);
 });

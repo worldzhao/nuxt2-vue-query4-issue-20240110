@@ -8,8 +8,8 @@ export default (context) => {
   Vue.use(VueQueryPlugin, options);
 
   if (process.client) {
-    if (context.nuxtState && context.nuxtState['vue-query']) {
-      hydrate(queryClient, context.nuxtState['vue-query']);
+    if (context.nuxtState && context.nuxtState.vueQueryState) {
+      hydrate(queryClient, context.nuxtState.vueQueryState);
     }
   }
 };
